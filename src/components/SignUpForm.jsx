@@ -9,6 +9,7 @@ export default function SignUpForm({ token, setToken }) {
   const updateForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
   const sendForm = async (e) => {
     e.preventDefault();
     if (form.username.length < 8) {
@@ -48,7 +49,7 @@ export default function SignUpForm({ token, setToken }) {
               name="username"
               className="form-control"
               id="exampleInputUsername1"
-              placeholder="Enter email"
+              placeholder="Enter username"
               onChange={updateForm}
             />
           </div>
