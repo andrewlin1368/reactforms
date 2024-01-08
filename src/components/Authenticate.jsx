@@ -25,9 +25,12 @@ export default function Authenticate({ token, setToken }) {
 
   return (
     (!message && (
-      <div>
-        Authenticate
-        <button onClick={authToken}>Authenticate Token</button>
+      <div className="form-group">
+        <button type="submit" className="btn btn-primary" onClick={authToken}>
+          Authenticate Token
+        </button>
+
+        {/* <button onClick={authToken}>Authenticate Token</button> */}
       </div>
     )) || <div>Message: {message}</div>
   );
