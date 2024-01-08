@@ -4,10 +4,12 @@ import SignUpForm from "./components/SignUpForm";
 import Authenticate from "./components/Authenticate";
 
 function App() {
+  const [token, setToken] = useState(null);
+  console.log(token);
   return (
     <>
-      <SignUpForm></SignUpForm>
-      <Authenticate></Authenticate>
+      <SignUpForm token={token} setToken={setToken}></SignUpForm>
+      <Authenticate token={token} setToken={setToken}></Authenticate>
     </>
   );
 }

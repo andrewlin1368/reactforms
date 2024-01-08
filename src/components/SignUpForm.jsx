@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function SignUpForm() {
+export default function SignUpForm({ token, setToken }) {
   const [form, setForm] = useState({ username: "", password: "" });
   const [message, setMessage] = useState(null);
 
@@ -22,6 +22,7 @@ export default function SignUpForm() {
       );
       console.log(response);
       setMessage(response.data.message);
+      setToken(response.data.token);
     } catch (error) {
       setMessage(error);
     }
@@ -41,7 +42,7 @@ export default function SignUpForm() {
     )) || (
       <div>
         <h2>{message}</h2>
-        <h4>{form.username}</h4>
+        <h4>@{form.username}</h4>
       </div>
     )
   );
