@@ -12,11 +12,11 @@ export default function SignUpForm({ token, setToken }) {
   const sendForm = async (e) => {
     e.preventDefault();
     if (form.username.length < 8) {
-      setValidate("Username needs to be atleast 8 characters");
+      setValidate("Username needs to be at least 8 characters");
       return;
     }
     if (form.password.length < 8) {
-      setValidate("Password needs to be atleast 8 characters");
+      setValidate("Password needs to be at least 8 characters");
       return;
     }
     try {

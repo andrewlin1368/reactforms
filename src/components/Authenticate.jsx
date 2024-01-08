@@ -4,6 +4,7 @@ import axios from "axios";
 export default function Authenticate({ token, setToken }) {
   const [message, setMessage] = useState(null);
   console.log("auth", token);
+
   const authToken = async () => {
     try {
       const response = await axios.get(
@@ -15,7 +16,9 @@ export default function Authenticate({ token, setToken }) {
           },
         }
       );
-      setMessage(response.data.message);
+      if (response.data.message === "jwt malformed")
+        setMessage("Not signed in");
+      else setMessage(response.data.message);
       console.log(response.data.message);
     } catch (error) {
       setMessage(error.message);
@@ -23,15 +26,15 @@ export default function Authenticate({ token, setToken }) {
     }
   };
 
-  return (
-    (!message && (
-      <div className="form-group">
-        <button type="submit" className="btn btn-primary" onClick={authToken}>
-          Authenticate Token
-        </button>
+  if (token) authToken();
 
-        {/* <button onClick={authToken}>Authenticate Token</button> */}
-      </div>
-    )) || <div>Message: {message}</div>
+  return (
+    <div className="form-group">
+      <button type="submit" className="btn btn-primary" onClick={authToken}>
+        Authenticate Token
+      </button>
+      <h4>{message}</h4>
+      {/* <button onClick={authToken}>Authenticate Token</button> */}
+    </div>
   );
 }
