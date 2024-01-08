@@ -26,7 +26,7 @@ export default function Authenticate({ token, setToken }) {
     }
   };
 
-  if (token) authToken();
+  if (token && message === "Not signed in") authToken();
 
   return (
     <div className="form-group">
